@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_item_admin"
+            android:checked="true"
+            android:icon="@drawable/abc_ic_menu_share_mtrl_alpha"
+            android:title="@string/nav_item_admin" />
+        <item
+            android:id="@+id/navigation_item_entrance"
+            android:icon="@drawable/abc_ic_menu_share_mtrl_alpha"
+            android:title="@string/nav_item_entrance" />
+        <item
+            android:id="@+id/navigation_item_pay_payout"
+            android:icon="@drawable/abc_ic_menu_share_mtrl_alpha"
+            android:title="@string/nav_item_pay_payout" />
+        <item
+            android:id="@+id/navigation_item_bar"
+            android:icon="@drawable/abc_ic_menu_share_mtrl_alpha"
+            android:title="@string/nav_item_bar" />
+        <item
+            android:id="@+id/navigation_item_security"
+            android:icon="@drawable/abc_ic_menu_share_mtrl_alpha"
+            android:title="@string/nav_item_security" />
+    </group>
+
+    <item android:title="@string/nav_sub_menu">
+        <menu>
+            <item
+                android:icon="@drawable/abc_ic_menu_share_mtrl_alpha"
+                android:title="@string/nav_sub_menu_settings" />
+            <item
+                android:icon="@drawable/abc_ic_menu_share_mtrl_alpha"
+                android:title="@string/nav_sub_menu_logout" />
+        </menu>
+    </item>
+
+</menu>
