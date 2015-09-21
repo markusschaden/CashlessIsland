@@ -17,4 +17,6 @@
     <string name="navigation_drawer_close">Closed</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_admin">Admin</string>
+    <string name="title_activity_security">Security</string>
+    <string name="title_activity_pay">Pay</string>
 </resources>

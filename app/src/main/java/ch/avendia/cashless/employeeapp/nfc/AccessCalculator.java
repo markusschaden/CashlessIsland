@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class AccessCalculator {
 
-    public int getAccessValue(List<Access> accesses) {
+    public static int getAccessValue(List<Access> accesses) {
 
         int access = 0;
 
@@ -18,6 +18,15 @@ public class AccessCalculator {
         }
 
         return access;
+    }
+
+
+    public static boolean isAuthorized(int accessCode, int customerAccess) {
+
+        int access = (int)Math.pow(2, accessCode);
+
+        return (access & customerAccess) != 0;
+
     }
 
 

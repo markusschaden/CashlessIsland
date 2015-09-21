@@ -19,7 +19,7 @@
         card_view:cardCornerRadius="4dp">
 
         <TextView
-            android:id="@+id/list_item"
+            android:id="@+id/info_text"
             android:textSize="20sp"
             android:paddingLeft="4dp"
             android:text="Test "

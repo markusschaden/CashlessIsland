@@ -24,15 +24,15 @@ public class AccessService {
 
 
     public static Access getMainArea() {
-        return new Access(1, "Main Area");
+        return new Access(0, "Main Area");
     }
 
     public static Access getBackstage() {
-        return new Access(2, "Backstage");
+        return new Access(1, "Backstage");
     }
 
     public static Access getMaintenance() {
-        return new Access(3, "Maintenance");
+        return new Access(2, "Maintenance");
     }
 
 

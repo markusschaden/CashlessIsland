@@ -69,6 +69,9 @@ public class CardHandler {
         mifareUltralight.writePage(5, new byte[]{0x00, 0x00, 0x00, 0x01});
     }
 
+    public int getCash() {
+        return readIntPage(START_CASH);
+    }
 
     public CashlessCard readCard() throws IOException {
         byte[] info = readSinglePage(5);
@@ -156,6 +159,10 @@ public class CardHandler {
     private void writeUID(byte[] uid) throws IOException {
 
         writeByte(uid, START_UID, END_UID);
+    }
+
+    public void writeCash(int cash) throws IOException {
+        writeCash(Ints.toByteArray(cash));
     }
 
     private void writeCash(byte[] cash) throws IOException {

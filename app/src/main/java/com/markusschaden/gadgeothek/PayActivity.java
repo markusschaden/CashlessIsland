@@ -1,50 +1,28 @@
 package com.markusschaden.gadgeothek;
 
-import android.app.Activity;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
-import android.nfc.tech.MifareUltralight;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.util.ArrayMap;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.Map;
-
-import ch.avendia.cashless.employeeapp.TrianglifyRandomSettings;
-import ch.avendia.cashless.employeeapp.domain.CashlessSettings;
-import ch.avendia.trianglify_lib.Trianglify;
-
-public class AdminActivity extends DefaultActivity {
+public class PayActivity extends DefaultActivity {
 
 
-    private CashlessNfcCardFragment[] fragements = new CashlessNfcCardFragment[] {new EmployeeListFragment(), new AdminFragment()};
+    private CashlessNfcCardFragment[] fragements = new CashlessNfcCardFragment[] {new PayInFragment()};
     private ViewPager viewPager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setupLayout(R.layout.activity_admin);
+        setupLayout(R.layout.activity_pay);
 		setupNfc();
 
 		AdminTabsAdapter adapter = new AdminTabsAdapter(getSupportFragmentManager());

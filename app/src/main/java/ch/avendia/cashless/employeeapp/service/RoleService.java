@@ -42,7 +42,7 @@ public class RoleService {
     public static Role getEntranceRole() {
         Role adminRole = new Role();
         adminRole.setName(RoleName.ENTRANCE);
-        adminRole.setAccessList(Arrays.asList(AccessService.getMainArea(), AccessService.getBackstage()));
+        adminRole.setAccessList(Arrays.asList(AccessService.getMainArea()));
 
         return adminRole;
     }

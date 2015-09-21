@@ -56,4 +56,14 @@ public class Employee implements Serializable {
     public void setUserId(String userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", roles=" + roles +
+                ", userId='" + userId + '\'' +
+                '}';
+    }
 }

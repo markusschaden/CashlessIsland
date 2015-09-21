@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -92,8 +93,9 @@ public class EmployeeListFragment extends CashlessNfcCardFragment {
                 CardHandler cardHandler = new CardHandler(tag);
                 cardHandler.reset();
 
-                AccessCalculator accessCalculator = new AccessCalculator();
-                int access = accessCalculator.getAccessValue(selectedEmployee.getAcccess());
+                Log.i("Employee writer: ", selectedEmployee.toString());
+                int access = AccessCalculator.getAccessValue(selectedEmployee.getAcccess());
+                Log.i("Employee access:","Accesscode:" + access);
 
                 CashlessCardService cashlessCardService = new CashlessCardService();
 
