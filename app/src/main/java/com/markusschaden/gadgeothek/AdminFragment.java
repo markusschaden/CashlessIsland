@@ -104,7 +104,8 @@ public class AdminFragment extends CashlessNfcCardFragment {
 
     @Override
     public void cashlessCardDetected(Tag tag) {
-
-        currentAsyncTask.execute(tag);
+        if(currentAsyncTask != null) {
+            currentAsyncTask.execute(tag);
+        }
     }
 }

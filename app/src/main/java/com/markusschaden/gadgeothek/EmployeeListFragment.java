@@ -97,7 +97,7 @@ public class EmployeeListFragment extends CashlessNfcCardFragment {
 
                 CashlessCardService cashlessCardService = new CashlessCardService();
 
-                cardHandler.writeEmployeeCard(cashlessCardService.generateUID("12345"), 4567, access, selectedEmployee.getUserId(), 9999);
+                cardHandler.writeEmployeeCard(cashlessCardService.generateUID(cardHandler.getCardId()), 0, access, selectedEmployee.getUserId(), 9999);
 
 
             } catch (IOException e) {

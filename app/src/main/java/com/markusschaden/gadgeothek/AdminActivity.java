@@ -45,7 +45,8 @@ public class AdminActivity extends AppCompatActivity {
 
     CashlessNfcCardFragment current;
     private NfcAdapter mNfcAdapter;
-
+    private CashlessNfcCardFragment[] fragements = new CashlessNfcCardFragment[] {new EmployeeListFragment(), new AdminFragment()};
+    private ViewPager viewPager;
 
 
     @Override
@@ -98,30 +99,27 @@ public class AdminActivity extends AppCompatActivity {
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
 
-		DesignDemoPagerAdapter adapter = new DesignDemoPagerAdapter(getSupportFragmentManager());
-		ViewPager viewPager = (ViewPager)findViewById(R.id.viewpager);
+		AdminTabsAdapter adapter = new AdminTabsAdapter(getSupportFragmentManager());
+        viewPager = (ViewPager)findViewById(R.id.viewpager);
 		viewPager.setAdapter(adapter);
 		TabLayout tabLayout = (TabLayout)findViewById(R.id.tablayout);
 		tabLayout.setupWithViewPager(viewPager);
 
-
 	}
 
-	class DesignDemoPagerAdapter extends FragmentStatePagerAdapter {
+	class AdminTabsAdapter extends FragmentStatePagerAdapter {
 
-		public DesignDemoPagerAdapter(FragmentManager fm) {
+		public AdminTabsAdapter(FragmentManager fm) {
 			super(fm);
 		}
 
 		@Override
 		public Fragment getItem(int position) {
-			if(position == 0) {
-				current = new EmployeeListFragment();
-				return current;
-			} else {
-				current = new AdminFragment();
-				return current;
-			}
+            if(position >= fragements.length) {
+                throw new RuntimeException("Item "+ position + " does not exists");
+            }
+
+            return fragements[position];
 		}
 
 		@Override
@@ -238,7 +236,9 @@ public class AdminActivity extends AppCompatActivity {
         if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)) {
             Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
 
-            current.cashlessCardDetected(tag);
+            int index = viewPager.getCurrentItem();
+
+            fragements[index].cashlessCardDetected(tag);
 
             //new NFCLoginReaderTask().execute(tag);
             //new NdefWriterTask().execute(tag);

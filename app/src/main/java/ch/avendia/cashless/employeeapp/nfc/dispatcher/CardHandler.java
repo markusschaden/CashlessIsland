@@ -31,6 +31,7 @@ public class CardHandler {
     private final int START_EVENTID = 26;
     private final int START_DATA = 6;
     private final int END_DATA = 30;
+    private String cardId;
 
     public CardHandler(Tag tag) throws IOException {
         mifareUltralight = MifareUltralight.get(tag);
@@ -38,6 +39,7 @@ public class CardHandler {
             throw new IOException("Wrong Type");
         }
         mifareUltralight.connect();
+        cardId = new String(tag.getId());
         mifareUltralight.setTimeout(500);
     }
 
@@ -203,4 +205,7 @@ public class CardHandler {
     }
 
 
+    public String getCardId() {
+        return cardId;
+    }
 }
