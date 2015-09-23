@@ -20,8 +20,10 @@ public class TicketService {
 
     }
 
-    public void bookTicket() {
+    public Ticket bookTicket(TicketCategory ticketCategory) {
 
+
+        return null;
     }
 
 

@@ -7,9 +7,11 @@ import android.graphics.drawable.BitmapDrawable;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -32,6 +34,11 @@ public class LoginActivity extends DefaultActivity {
         super.onCreate(savedInstanceState);
         setupLayoutWithoutNavigationView(R.layout.activity_login);
         setupNfc();
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().setStatusBarColor(getResources().getColor(R.color.primary_dark));
+        }
 
         if (mNfcAdapter == null) {
             // Stop here, we definitely need NFC
@@ -72,36 +79,6 @@ public class LoginActivity extends DefaultActivity {
             //new NdefWriterTask().execute(tag);
         }
     }
-
-   private class NdefWriterTask extends AsyncTask<Tag, Void, String> {
-
-
-
-       @Override
-       protected String doInBackground(Tag... params) {
-           Tag tag = params[0];
-
-           try {
-               CardHandler cardHandler = new CardHandler(tag);
-               cardHandler.reset();
-               List<Access> accessList = new ArrayList<>();
-               accessList.add(new Access(1, "Main"));
-               accessList.add(new Access(2, "Backstage"));
-
-               AccessCalculator accessCalculator = new AccessCalculator();
-               int access = accessCalculator.getAccessValue(accessList);
-
-               cardHandler.writeEmployeeCard("0ce28b7e-1ac6-49f7-9d78-c257a7b682ce", 4567, access, "190bf7c4-f729-4b3c-8c22-eecc57a03b68", 9999);
-
-
-           } catch (IOException e) {
-               e.printStackTrace();
-           }
-
-           return null;
-       }
-   }
-
 
     private class NFCLoginReaderTask extends AsyncTask<Tag, Void, CashlessSettings> {
         private ProgressDialog dialog;

@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.nfc.NfcAdapter;
 import android.nfc.tech.MifareUltralight;
@@ -18,6 +19,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import ch.avendia.cashless.employeeapp.TrianglifyRandomSettings;
 import ch.avendia.cashless.employeeapp.domain.CashlessSettings;
@@ -59,6 +62,18 @@ public abstract class DefaultActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
+
+        // create our manager instance after the content view is set
+        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        // enable status bar tint
+        tintManager.setStatusBarTintEnabled(true);
+        // enable navigation bar tint
+        tintManager.setNavigationBarTintEnabled(true);
+        // set the transparent color of the status bar, 20% darker
+        tintManager.setTintColor(Color.parseColor("#20FFFFFF"));
+        if (!menu) {
+            //toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
+        }
 
         if (menu) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -104,10 +119,10 @@ public abstract class DefaultActivity extends AppCompatActivity {
                     return true;
                 }
             });
+
+            updateHeaderView();
         }
 
-
-        updateHeaderView();
 
     }
 
@@ -121,7 +136,7 @@ public abstract class DefaultActivity extends AppCompatActivity {
     }
 
     private void updateHeaderView() {
-        if (cashlessSettings != null && cashlessSettings.getEmployee() != null) {
+        if (cashlessSettings != null && cashlessSettings.getEmployee() != null && navigationView != null) {
 
             View headerView = navigationView.findViewById(R.id.drawer_header_root);
             TextView headerText = (TextView) headerView.findViewById(R.id.drawerHeader);
@@ -217,5 +232,15 @@ public abstract class DefaultActivity extends AppCompatActivity {
         state.putSerializable(LOGIN_RESULT_BUNDLE, cashlessSettings);
     }
 
+
+    // A method to find height of the status bar
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
 
 }
