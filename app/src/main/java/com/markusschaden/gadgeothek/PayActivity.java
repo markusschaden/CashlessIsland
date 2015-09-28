@@ -15,7 +15,7 @@ import android.view.MenuItem;
 public class PayActivity extends DefaultActivity {
 
 
-    private CashlessNfcCardFragment[] fragements = new CashlessNfcCardFragment[] {new PayInFragment()};
+    private CashlessNfcCardFragment[] fragements = new CashlessNfcCardFragment[] {new PayInFragment(), new PayOutFragment()};
     private ViewPager viewPager;
 
 
