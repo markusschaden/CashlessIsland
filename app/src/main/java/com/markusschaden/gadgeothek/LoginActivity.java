@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -28,6 +30,10 @@ import ch.avendia.trianglify_lib.Trianglify;
 import ch.avendia.trianglify_lib.TrianglifyRandomSettings;
 
 public class LoginActivity extends DefaultActivity {
+
+    private Button loginButton;
+    private TextView usernameText;
+    private TextView passwordText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +59,20 @@ public class LoginActivity extends DefaultActivity {
         } else {
             //mTextView.setText(R.string.explanation);
         }
+
+
+        usernameText = (TextView)findViewById(R.id.username);
+        passwordText = (TextView)findViewById(R.id.password);
+        loginButton = (Button)findViewById(R.id.login);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = usernameText.getText().toString();
+                String password = passwordText.getText().toString();
+
+                new CredentialsLoginTask().execute(new String[] {username, password});
+            }
+        });
 
         handleIntent(getIntent());
     }
@@ -123,6 +143,42 @@ public class LoginActivity extends DefaultActivity {
             dialog.dismiss();
         }
     }
+
+
+
+
+    private class CredentialsLoginTask extends AsyncTask<String, Void, CashlessSettings> {
+        private ProgressDialog dialog;
+
+        @Override
+        protected void onPreExecute() {
+            dialog = ProgressDialog.show(LoginActivity.this, "Login",
+                    "Loading. Please wait...", true);
+
+        }
+
+        @Override
+        protected CashlessSettings doInBackground(String... params) {
+            String username = params[0];
+            String password = params[1];
+
+            UserService userService = new UserService();
+            return userService.authenticate(username, password);
+        }
+
+
+        @Override
+        protected void onPostExecute(CashlessSettings result) {
+            if(result != null) {
+
+                startMainActivity(result);
+            }
+
+            dialog.dismiss();
+        }
+    }
+
+
 
 
     private void startMainActivity(CashlessSettings result) {

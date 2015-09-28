@@ -16,11 +16,16 @@ public class UserService {
 
     public CashlessSettings authenticate(String username, String password) {
 
+        CashlessSettings cashlessSettings = new CashlessSettings();
+        cashlessSettings.setNfcKey("000000000");
+        cashlessSettings.setSession("123456789");
 
+        EmployeeService employeeService = new EmployeeService();
+        Employee employee = employeeService.getEmployee("190bf7c4-f729-4b3c-8c22-eecc57a03b68");
 
+        cashlessSettings.setEmployee(employee);
 
-
-        return null;
+        return cashlessSettings;
     }
 
     public CashlessSettings authenticate(String uid) {

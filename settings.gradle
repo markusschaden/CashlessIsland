@@ -1,1 +1,1 @@
-include ':app', ':trianglify-lib'
+include ':app', ':trianglify-lib', ':cashlessdatabasegenerator'
