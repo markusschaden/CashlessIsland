@@ -1,4 +1,4 @@
-package com.markusschaden.gadgeothek;
+package ch.avendia.cashless.employeeapp.view;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -131,7 +131,7 @@ public abstract class DefaultActivity extends AppCompatActivity {
     }
 
     public void setupUserSettings(CashlessSettings cashlessSettings) {
-        this.cashlessSettings = cashlessSettings;
+        DefaultActivity.cashlessSettings = cashlessSettings;
         updateHeaderView();
     }
 

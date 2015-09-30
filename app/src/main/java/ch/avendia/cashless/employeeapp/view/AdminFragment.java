@@ -1,14 +1,9 @@
-package com.markusschaden.gadgeothek;
+package ch.avendia.cashless.employeeapp.view;
 
 import android.app.ProgressDialog;
 import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +47,6 @@ public class AdminFragment extends CashlessNfcCardFragment {
     }
 
 
-
     private void showWaitingDialog() {
 
         dialog = ProgressDialog.show(getActivity(), "Please wait...",
@@ -81,7 +75,7 @@ public class AdminFragment extends CashlessNfcCardFragment {
                 accessList.add(new Access(2, "Backstage"));
 
                 AccessCalculator accessCalculator = new AccessCalculator();
-                int access = accessCalculator.getAccessValue(accessList);
+                int access = AccessCalculator.getAccessValue(accessList);
 
                 cardHandler.writeEmployeeCard("0ce28b7e-1ac6-49f7-9d78-c257a7b682ce", 4567, access, "190bf7c4-f729-4b3c-8c22-eecc57a03b68", 9999);
 
@@ -104,7 +98,7 @@ public class AdminFragment extends CashlessNfcCardFragment {
 
     @Override
     public void cashlessCardDetected(Tag tag) {
-        if(currentAsyncTask != null) {
+        if (currentAsyncTask != null) {
             currentAsyncTask.execute(tag);
         }
     }

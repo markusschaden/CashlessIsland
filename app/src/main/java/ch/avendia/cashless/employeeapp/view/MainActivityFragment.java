@@ -1,7 +1,6 @@
-package com.markusschaden.gadgeothek;
+package ch.avendia.cashless.employeeapp.view;
 
 import android.nfc.Tag;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +17,7 @@ public class MainActivityFragment extends CashlessNfcCardFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView =inflater.inflate(R.layout.fragment_main, container, false);
-
-
+        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
 
         return rootView;

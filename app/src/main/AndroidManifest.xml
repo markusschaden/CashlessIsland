@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.markusschaden.gadgeothek" >
+    package="ch.avendia.cashless.employeeapp.view">
 
     <uses-feature
         android:name="android.hardware.nfc"

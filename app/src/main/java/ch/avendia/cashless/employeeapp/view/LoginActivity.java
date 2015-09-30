@@ -1,4 +1,4 @@
-package com.markusschaden.gadgeothek;
+package ch.avendia.cashless.employeeapp.view;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -17,12 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import ch.avendia.cashless.employeeapp.domain.CashlessSettings;
-import ch.avendia.cashless.employeeapp.nfc.Access;
-import ch.avendia.cashless.employeeapp.nfc.AccessCalculator;
 import ch.avendia.cashless.employeeapp.nfc.CashlessCard;
 import ch.avendia.cashless.employeeapp.nfc.dispatcher.CardHandler;
 import ch.avendia.cashless.employeeapp.service.UserService;
@@ -61,16 +57,16 @@ public class LoginActivity extends DefaultActivity {
         }
 
 
-        usernameText = (TextView)findViewById(R.id.username);
-        passwordText = (TextView)findViewById(R.id.password);
-        loginButton = (Button)findViewById(R.id.login);
+        usernameText = (TextView) findViewById(R.id.username);
+        passwordText = (TextView) findViewById(R.id.password);
+        loginButton = (Button) findViewById(R.id.login);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String username = usernameText.getText().toString();
                 String password = passwordText.getText().toString();
 
-                new CredentialsLoginTask().execute(new String[] {username, password});
+                new CredentialsLoginTask().execute(username, password);
             }
         });
 
@@ -135,7 +131,7 @@ public class LoginActivity extends DefaultActivity {
 
         @Override
         protected void onPostExecute(CashlessSettings result) {
-            if(result != null) {
+            if (result != null) {
 
                 startMainActivity(result);
             }
@@ -143,8 +139,6 @@ public class LoginActivity extends DefaultActivity {
             dialog.dismiss();
         }
     }
-
-
 
 
     private class CredentialsLoginTask extends AsyncTask<String, Void, CashlessSettings> {
@@ -169,7 +163,7 @@ public class LoginActivity extends DefaultActivity {
 
         @Override
         protected void onPostExecute(CashlessSettings result) {
-            if(result != null) {
+            if (result != null) {
 
                 startMainActivity(result);
             }
@@ -177,8 +171,6 @@ public class LoginActivity extends DefaultActivity {
             dialog.dismiss();
         }
     }
-
-
 
 
     private void startMainActivity(CashlessSettings result) {
@@ -195,8 +187,6 @@ public class LoginActivity extends DefaultActivity {
 
         finish();
     }
-
-
 
 
 }

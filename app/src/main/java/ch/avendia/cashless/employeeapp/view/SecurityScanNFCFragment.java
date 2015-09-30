@@ -1,34 +1,24 @@
-package com.markusschaden.gadgeothek;
+package ch.avendia.cashless.employeeapp.view;
 
 import android.app.ProgressDialog;
-import android.graphics.drawable.ColorDrawable;
 import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.common.primitives.Ints;
 
 import java.io.IOException;
 import java.util.List;
 
-import ch.avendia.cashless.employeeapp.domain.CashlessSettings;
 import ch.avendia.cashless.employeeapp.nfc.Access;
 import ch.avendia.cashless.employeeapp.nfc.AccessCalculator;
 import ch.avendia.cashless.employeeapp.nfc.CashlessCard;
 import ch.avendia.cashless.employeeapp.nfc.dispatcher.CardHandler;
-import ch.avendia.cashless.employeeapp.service.AccessService;
-import ch.avendia.cashless.employeeapp.service.UserService;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -65,10 +55,10 @@ public class SecurityScanNFCFragment extends CashlessNfcCardFragment {
 
     private void showDefaultView() {
 
-        if(mTextView != null) {
-            mTextView.setText("Scan NFC Tag \n(Access: "+accessCode+")");
+        if (mTextView != null) {
+            mTextView.setText("Scan NFC Tag \n(Access: " + accessCode + ")");
         }
-        if(mLinearLayout != null) {
+        if (mLinearLayout != null) {
             mLinearLayout.setBackgroundColor(getResources().getColor(R.color.background));
         }
     }
@@ -119,7 +109,7 @@ public class SecurityScanNFCFragment extends CashlessNfcCardFragment {
         protected void onPostExecute(CashlessCard result) {
             if (result != null && isAdded()) {
 
-                if(validateAccess(accessCode, result.getAccess())) {
+                if (validateAccess(accessCode, result.getAccess())) {
                     mLinearLayout.setBackgroundColor(getResources().getColor(R.color.green));
                     mTextView.setText("OK");
                 } else {

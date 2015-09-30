@@ -1,4 +1,4 @@
-package com.markusschaden.gadgeothek;
+package ch.avendia.cashless.employeeapp.view;
 
 import android.nfc.Tag;
 import android.support.v4.app.Fragment;

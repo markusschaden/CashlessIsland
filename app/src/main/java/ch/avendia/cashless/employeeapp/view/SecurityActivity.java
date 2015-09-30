@@ -1,4 +1,4 @@
-package com.markusschaden.gadgeothek;
+package ch.avendia.cashless.employeeapp.view;
 
 import android.content.Intent;
 import android.nfc.NfcAdapter;
@@ -24,14 +24,14 @@ public class SecurityActivity extends DefaultActivity implements SecurityActivit
         setupLayout(R.layout.activity_security);
         setupNfc();
 
-        if(savedInstanceState != null) {
-            accessCode = savedInstanceState.getInt(ACCESS_CODE_BUNDLE,-1);
+        if (savedInstanceState != null) {
+            accessCode = savedInstanceState.getInt(ACCESS_CODE_BUNDLE, -1);
         }
 
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        if(accessCode == -1) {
+        if (accessCode == -1) {
             fragmentTransaction.add(R.id.fragment_container, accessChooser).addToBackStack(null);
         } else {
             fragmentTransaction.add(R.id.fragment_container, securityNFCScan).addToBackStack(null);
@@ -40,7 +40,6 @@ public class SecurityActivity extends DefaultActivity implements SecurityActivit
         fragmentTransaction.commit();
 
     }
-
 
 
     protected void handleIntent(Intent intent) {
@@ -53,7 +52,6 @@ public class SecurityActivity extends DefaultActivity implements SecurityActivit
             securityNFCScan.cashlessCardDetected(tag);
         }
     }
-
 
 
     @Override
