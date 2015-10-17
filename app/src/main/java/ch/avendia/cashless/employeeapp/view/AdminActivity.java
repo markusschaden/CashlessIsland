@@ -31,6 +31,7 @@ public class AdminActivity extends DefaultActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
 
+        setActiveMenuItem(0);
     }
 
     class AdminTabsAdapter extends FragmentStatePagerAdapter {
@@ -55,7 +56,14 @@ public class AdminActivity extends DefaultActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return "Tab " + position;
+            switch (position) {
+                case 0:
+                    return "Employees";
+                case 1:
+                    return "Extras";
+                default:
+                    return "undefined";
+            }
         }
     }
 

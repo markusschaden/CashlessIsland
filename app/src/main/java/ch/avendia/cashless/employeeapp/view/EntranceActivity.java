@@ -12,31 +12,31 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 
-public class PayActivity extends DefaultActivity {
+public class EntranceActivity extends DefaultActivity {
 
 
-    private CashlessNfcCardFragment[] fragements = new CashlessNfcCardFragment[]{new PayInFragment(), new PayOutFragment()};
+    private CashlessNfcCardFragment[] fragements = new CashlessNfcCardFragment[]{new EntranceBoxOfficeFragment(), new EntrancePreSaleFragment()};
     private ViewPager viewPager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setupLayout(R.layout.activity_pay);
+        setupLayout(R.layout.activity_entrance);
         setupNfc();
 
-        AdminTabsAdapter adapter = new AdminTabsAdapter(getSupportFragmentManager());
+        EntranceTabsAdapter adapter = new EntranceTabsAdapter(getSupportFragmentManager());
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(adapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
 
-        setActiveMenuItem(2);
+        setActiveMenuItem(1);
     }
 
-    class AdminTabsAdapter extends FragmentStatePagerAdapter {
+    class EntranceTabsAdapter extends FragmentStatePagerAdapter {
 
-        public AdminTabsAdapter(FragmentManager fm) {
+        public EntranceTabsAdapter(FragmentManager fm) {
             super(fm);
         }
 
@@ -58,9 +58,9 @@ public class PayActivity extends DefaultActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Pay in";
+                    return "Box office";
                 case 1:
-                    return "Pay out";
+                    return "Pre sale";
                 default:
                     return "undefined";
             }

@@ -37,5 +37,7 @@ dependencies {
     compile 'com.google.guava:guava:18.0'
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     compile 'de.greenrobot:greendao:2.0.0'
+    compile 'me.dm7.barcodescanner:zxing:1.8.2'
+    compile 'org.projectlombok:lombok:1.16.6'
     compile project(':trianglify-lib')
 }

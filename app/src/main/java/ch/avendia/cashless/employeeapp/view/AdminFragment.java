@@ -70,15 +70,6 @@ public class AdminFragment extends CashlessNfcCardFragment {
             try {
                 CardHandler cardHandler = new CardHandler(tag);
                 cardHandler.reset();
-                List<Access> accessList = new ArrayList<>();
-                accessList.add(new Access(1, "Main"));
-                accessList.add(new Access(2, "Backstage"));
-
-                AccessCalculator accessCalculator = new AccessCalculator();
-                int access = AccessCalculator.getAccessValue(accessList);
-
-                cardHandler.writeEmployeeCard("0ce28b7e-1ac6-49f7-9d78-c257a7b682ce", 4567, access, "190bf7c4-f729-4b3c-8c22-eecc57a03b68", 9999);
-
 
             } catch (IOException e) {
                 return false;

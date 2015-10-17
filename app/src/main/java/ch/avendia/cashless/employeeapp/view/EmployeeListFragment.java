@@ -38,10 +38,6 @@ public class EmployeeListFragment extends CashlessNfcCardFragment {
 
         EmployeeService employeeService = new EmployeeService();
         items = employeeService.getEmployees();
-        /*for (int i = 0; i < 50; i++) {
-            items.add("Tab # item #" + i);
-        }*/
-
 
         final RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -49,7 +45,7 @@ public class EmployeeListFragment extends CashlessNfcCardFragment {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Item click nr: " + recyclerView.getChildAdapterPosition(v), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Item click nr: " + recyclerView.getChildAdapterPosition(v), Toast.LENGTH_SHORT).show();
                 selectedEmployee = items.get(recyclerView.getChildAdapterPosition(v));
 
                 dialog = ProgressDialog.show(getActivity(), "Writing Employee Data to Tag",

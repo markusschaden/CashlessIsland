@@ -7,6 +7,10 @@ import java.util.List;
  */
 public class AccessCalculator {
 
+    public static int getAccessValue(Access access) {
+        return (int)Math.pow(2, access.getAccessId());
+    }
+
     public static int getAccessValue(List<Access> accesses) {
 
         int access = 0;

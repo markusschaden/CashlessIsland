@@ -19,4 +19,5 @@
     <string name="title_activity_admin">Admin</string>
     <string name="title_activity_security">Security</string>
     <string name="title_activity_pay">Pay</string>
+    <string name="title_activity_entrance">Entrance</string>
 </resources>

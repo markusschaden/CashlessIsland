@@ -32,13 +32,14 @@ public class SecurityActivity extends DefaultActivity implements SecurityActivit
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         if (accessCode == -1) {
-            fragmentTransaction.add(R.id.fragment_container, accessChooser).addToBackStack(null);
+            fragmentTransaction.add(R.id.fragment_container, accessChooser);
         } else {
             fragmentTransaction.add(R.id.fragment_container, securityNFCScan).addToBackStack(null);
             securityNFCScan.setAccessCode(accessCode);
         }
         fragmentTransaction.commit();
 
+        setActiveMenuItem(4);
     }
 
 

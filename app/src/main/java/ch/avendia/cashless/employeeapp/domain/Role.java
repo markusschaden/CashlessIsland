@@ -4,10 +4,14 @@ import java.io.Serializable;
 import java.util.List;
 
 import ch.avendia.cashless.employeeapp.nfc.Access;
+import lombok.Data;
+import lombok.ToString;
 
 /**
  * Created by Markus on 17.09.2015.
  */
+@Data
+@ToString(callSuper = true)
 public class Role implements Serializable{
 
     private RoleName name;

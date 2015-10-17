@@ -64,7 +64,7 @@ public class SecurityActivityFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Item click nr: " + recyclerView.getChildAdapterPosition(v), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Item click nr: " + recyclerView.getChildAdapterPosition(v), Toast.LENGTH_SHORT).show();
                 selectedAccess = items.get(recyclerView.getChildAdapterPosition(v));
                 mCallback.onAccessSelected(selectedAccess);
             }

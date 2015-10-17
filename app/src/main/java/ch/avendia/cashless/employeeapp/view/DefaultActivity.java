@@ -16,6 +16,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -50,6 +52,20 @@ public abstract class DefaultActivity extends AppCompatActivity {
 
     public void setupLayoutWithoutNavigationView(int layoutId) {
         setupLayoutInternal(layoutId, false);
+    }
+
+    public void setActiveMenuItem(int id) {
+        navigationView.getMenu().getItem(id).setChecked(true);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        for(int i=0;i<menu.size();i++){
+            menu.getItem(i).setVisible(false);
+        }
+
+        return super.onPrepareOptionsMenu(menu);
     }
 
     public void setupLayout(int layoutId) {
@@ -105,6 +121,9 @@ public abstract class DefaultActivity extends AppCompatActivity {
                         case R.id.navigation_item_pay_payout:
                             intent = new Intent(getApplication(), PayActivity.class);
                             break;
+                        case R.id.navigation_item_entrance:
+                            intent = new Intent(getApplication(), EntranceActivity.class);
+                            break;
                         case R.id.navigation_item_logout:
                             cashlessSettings = null;
                             intent = new Intent(getApplication(), LoginActivity.class);
@@ -114,7 +133,6 @@ public abstract class DefaultActivity extends AppCompatActivity {
                     if (intent != null) {
                         startActivity(intent);
                     }
-
 
                     return true;
                 }

@@ -7,11 +7,9 @@
 
     <Button
         android:id="@+id/writeEmployeeTag"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:width="150dp"
-        android:height="75dp"
-        android:layout_marginTop="60dp"
-        android:text="Write Employee Tag"/>
+
+        android:text="Reset tag"/>
 
 </RelativeLayout>

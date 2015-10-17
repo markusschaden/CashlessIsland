@@ -18,13 +18,28 @@
         android:foreground="?android:attr/selectableItemBackground"
         card_view:cardCornerRadius="4dp">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <TextView
             android:id="@+id/list_item"
-            android:textSize="20sp"
+            android:textSize="32sp"
             android:paddingLeft="4dp"
             android:text="Test "
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/roles_list_item"
+                android:layout_below="@+id/list_item"
+                android:paddingTop="4dp"
+                android:textSize="24sp"
+                android:paddingLeft="4dp"
+                android:text="Test "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
 
 </LinearLayout>

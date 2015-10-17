@@ -54,12 +54,14 @@ public class SecurityScanNFCFragment extends CashlessNfcCardFragment {
     }
 
     private void showDefaultView() {
+        if(isAdded()) {
+            if (mTextView != null) {
 
-        if (mTextView != null) {
-            mTextView.setText("Scan NFC Tag \n(Access: " + accessCode + ")");
-        }
-        if (mLinearLayout != null) {
-            mLinearLayout.setBackgroundColor(getResources().getColor(R.color.background));
+                mTextView.setText("Scan NFC Tag \n(Access: " + (int)Math.pow(2,accessCode) + ")");
+            }
+            if (mLinearLayout != null) {
+                mLinearLayout.setBackgroundColor(getResources().getColor(R.color.background));
+            }
         }
     }
 
